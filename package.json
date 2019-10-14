@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "export NODE_ENV=prod && node ./src/app.js",
+    "devStart": "export NODE_ENV=dev && nodemon ./src/app.js"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
+    "http": "^0.0.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.4"
   },
