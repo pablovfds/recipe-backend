@@ -1,5 +1,5 @@
 
-if (process.env.NODE_ENV === 'prod') {
+if (process.env.NODE_ENV !== 'prod') {
     require('dotenv/config');
 }
 
@@ -14,8 +14,6 @@ app.use('/', recipesRoute)
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-
-
 
 // HTTP port setting
 const port = process.env.PORT || '3000';

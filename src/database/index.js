@@ -1,12 +1,27 @@
 const mongoose = require('mongoose');
 
-const dbUrl = process.env.DATABASE_URL || 'mongodb://localhost:27017/recipes-db'
+if (process.env.NODE_ENV != 'prod') {
+    require('dotenv/config');
+}
 
-mongoose.connect(dbUrl, {
+const {
+    MONGO_HOSTNAME,
+    MONGO_PORT,
+    MONGO_DB
+  } = process.env;
+
+const url = `mongodb://${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}`;
+
+const options = {
     useNewUrlParser: true,
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 500,
+    connectTimeoutMS: 10000,
     useUnifiedTopology: true,
     useCreateIndex: true,
-}, (err) => {
+  };
+
+mongoose.connect(url, options, (err) => {
     if (err) {
         console.error(err)
     } else {
