@@ -9,11 +9,11 @@ const recipesRoute = require('./routes/recipes');
 
 const app = express();
 
-app.use('/', recipesRoute)
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/', recipesRoute)
 
 // HTTP port setting
 const port = process.env.PORT || '3000';
